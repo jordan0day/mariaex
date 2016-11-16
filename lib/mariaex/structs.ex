@@ -24,6 +24,8 @@ end
 defmodule Mariaex.Error do
   defexception [:message, :tag, :action, :reason, :mariadb, :connection_id]
 
+  @type t :: %__MODULE__{}
+
   def message(e) do
     cond do
       kw = e.mariadb ->
@@ -39,4 +41,6 @@ end
 defmodule Mariaex.Cursor do
   @moduledoc false
   defstruct [:ref, :statement_id, :params, max_rows: 0]
+
+  @type t :: %__MODULE__{}
 end
